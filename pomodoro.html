@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="stylepomodoro.css">
+</head>
+
+<body>
+    <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+        <p class="h5 my-0 me-md-auto fw-normal">GTD-POMODORO</p>
+        <nav class="nav nav-pills nav-fill my-2 my-md-0 me-md-3">
+            <li class="nav-item">
+                <a class="btn btn-outline-info mr-3" href="/index.html">GTD</a>
+            </li>
+
+        </nav>
+        <a class="btn btn-outline-danger ml-3" href="/pomodoro.html">Pomodoro</a>
+
+    </header>
+    <div style="display: flex;
+    justify-content: center;">
+        <div style="align-self: center;" class="mb-3 mt-3  card">
+            <div class="card-body">
+
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Pomodoro</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Short Break</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Long Break</a>
+                    </li>
+                    <li class="nav-item ml-3"> <button type="button" class="btn btn-light ml-3" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class=" bi bi-gear-fill"></i></button> </li>
+                    <div class="modal fade text-dark" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Configuracion</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div id="alertform" class="col" style="display: flex;
+                          justify-content: center;"></div>
+                                    <div class="form-group">
+
+                                        <label for="formGroupExampleInput">Minutos para el Pomodoro:</label>
+                                        <input class="form-control col" type="number" id="valPomodoro" value="25">
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label for="formGroupExampleInput">Minutos para el Short-Break:</label>
+                                        <input class="form-control col" type="number" id="valShortBreak" value="5">
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label for="formGroupExampleInput">Minutos para el Long-Break:</label>
+                                        <input class="form-control col" type="number" id="valLongBreak" value="15">
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" onclick="clickmodal()">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active  text-center" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                        <p class="h1" id="timer-pomodoro">01 : 00</p>
+                    </div>
+                    <div class="tab-pane fade h1 text-center" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                        <p class="h1" id="timer-shortbreak">05 : 00</p>
+                    </div>
+                    <div class="tab-pane fade h1 text-center" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                        <p class="h1" id="timer-longbreak">15 : 00</p>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center"><button class="btn btn-danger btn-lg text-center" onclick="timer()" id="bttimer">Start</button></div>
+
+            </div>
+        </div>
+
+    </div>
+    <div id="alert" class="col" style="display: flex;
+justify-content: center;"></div>
+    <div style="display: flex;
+justify-content: center;">
+        <div id="myDIV" class="header card col-6  ">
+            <div class="card-title">
+                <h2>Tareas</h2>
+            </div>
+            <div class="card-body">
+                <div class="form-floating mb-3 col-8">
+                    <input type="text" class="form-control" id="myInput" placeholder="Tareas">
+                    <label for="myInput">Tarea</label>
+                </div>
+
+                <span onclick="newElement()" class="addBtn">Add</span>
+
+            </div>
+            <div class="col-1"><label>Pomodoros:</label></div>
+            <div class="col-2">
+
+                <input type="number" class="form-control-sm ml-5" id="pom" value="1">
+            </div>
+        </div>
+
+    </div>
+    <div class="col-6" style="margin: auto;">
+        <ul id="myUL" class="myUL ">
+
+    </div>
+    <script src="logicpomodoro.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+</body>
+
+</html>D
